@@ -10,12 +10,23 @@
 namespace Arikaim\Modules\Dev;
 
 use Arikaim\Core\Extension\Module;
+use Arikaim\Modules\Dev\RequestLoggerMiddleware;
 
 /**
  * Dev tools module class
  */
 class Dev extends Module
 {   
+    /**
+     * Boot module
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->addMiddlewareClass(RequestLoggerMiddleware::class);
+    }
+
     /**
      * Install module
      *
