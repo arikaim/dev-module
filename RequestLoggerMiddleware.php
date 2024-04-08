@@ -37,7 +37,8 @@ class RequestLoggerMiddleware extends Middleware implements MiddlewareInterface
         $arikaim->get('logger')->info('request auth header',[
             'url'           => $request->getUri()->getPath(),
             'method'        => $request->getMethod(),
-            'Authorization' => empty($auth) ? 'N/A' : $auth
+            'Authorization' => empty($auth) ? 'N/A' : $auth,
+            'headers'       => $request->getHeaders()
         ]);
 
         return [$request,$response];            
