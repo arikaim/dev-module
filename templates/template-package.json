@@ -1,0 +1,48 @@
+{      
+    "title": "Template {{ name }}",
+    "version": "1.0.0",
+    "name": "{{ name }}",
+    "package-type": "template",
+    "icon": "grid layout",
+    "thumbnail": "thumbnail.jpg",
+    "private-repository": true,
+    "repository": "",
+    "require": {
+        "components": [
+            "icons"
+        ],
+        "library": [
+            "jquery",
+            "arikaim",
+            "arikaim-ui"
+        ],
+        "extensions": [
+        ]
+    },
+    "routes": [
+    ],
+    "languages": [
+        "en"      
+    ],
+    "themes": [
+        "default"
+    ],
+    "default-theme": "default",
+    "include": {     
+        "components": [    
+        ],         
+        "css": [
+            "preflight.css",
+            "style.css",
+            "tailwind.min.css"
+        ],        
+        "library": [
+            "jquery",                                
+            "arikaim",
+            "arikaim-ui",      
+            "fomantic:form-validation"       
+        ]       
+    },
+    "modules": {
+    }
+}

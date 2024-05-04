@@ -35,5 +35,6 @@ class Dev extends Module
     public function install()
     {    
         $this->registerConsoleCommand('JwtTokenInfoCommand');
+        $this->registerConsoleCommand('CreateTemplate');
     }
 }
