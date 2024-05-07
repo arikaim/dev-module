@@ -52,6 +52,6 @@ class CreateTemplate extends ConsoleCommand
     
         $action->run();
 
-        $this->showMDone();
+        $this->ShowCompleted();
     }
 }

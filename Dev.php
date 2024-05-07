@@ -36,5 +36,6 @@ class Dev extends Module
     {    
         $this->registerConsoleCommand('JwtTokenInfoCommand');
         $this->registerConsoleCommand('CreateTemplate');
+        $this->registerConsoleCommand('DowloadHtmlComponent');
     }
 }
