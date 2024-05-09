@@ -72,6 +72,6 @@ class DowloadHtmlComponent extends ConsoleCommand
             return;  
         }
 
-        $this->ShowCompleted();
+        $this->showCompleted();
     }
 }
