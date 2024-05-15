@@ -1,0 +1,20 @@
+{
+    "title": "{{ name }} extension",
+    "name": "{{ name }}",
+    "package-type": "extension",
+    "type": "user",
+    "description": "Package description ...",
+    "short-description": "Package short description",
+    "version": "1.0.0",
+    "position": "1",
+    "install-order": 1,
+    "require": {
+    },
+    "admin-menu": {        
+        "title": "{{ name }} menu",
+        "icon": "list",
+        "page-title": "{{ name }} title",
+        "page-icon": "list",       
+        "component": "{{ name }}::admin"
+    }
+}

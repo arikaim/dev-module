@@ -13,6 +13,7 @@ use Arikaim\Core\Utils\File;
 use Arikaim\Core\Utils\Utils;
 use Arikaim\Core\Utils\Path;
 use Arikaim\Modules\Dev\Actions\DevAction;
+use Arikaim\Modules\Dev\Dev;
 
 /**
 * Create template action
@@ -65,18 +66,24 @@ class CreateTemplate extends DevAction
         $this->createTemplateFolder('themes',$templatePath);
         // create files
         // .gitignore
-        $this->createFile($templatePath . '.gitignore','gitignore.html');
+        Dev::createFile($templatePath . '.gitignore','gitignore.html');
         // default theme
-        $this->createFile($templatePath . 'themes' . DIRECTORY_SEPARATOR . 'default.json','themes/default.html');
+        Dev::createFile($templatePath . 'themes' . DIRECTORY_SEPARATOR . 'default.json','themes/default.html');
         // css files
-        $this->createFile($templatePath . 'css' . DIRECTORY_SEPARATOR . 'preflight.css','css/preflight.css');
-        $this->createFile($templatePath . 'css' . DIRECTORY_SEPARATOR . 'include.css','css/include.css');
-        $this->createFile($templatePath . 'css' . DIRECTORY_SEPARATOR . 'style.css','css/style.css');
+        Dev::createFile($templatePath . 'css' . DIRECTORY_SEPARATOR . 'preflight.css','css/preflight.css');
+        Dev::createFile($templatePath . 'css' . DIRECTORY_SEPARATOR . 'include.css','css/include.css');
+        Dev::createFile($templatePath . 'css' . DIRECTORY_SEPARATOR . 'style.css','css/style.css');
         // package descriptor file
-        $this->createFile($templatePath . 'arikaim-package.json','template-package.json',[
+        Dev::createFile($templatePath . 'arikaim-package.json','template-package.json',[
             'name' => $templateName
         ]);
-        
+        // create taillwind config file
+        Dev::createFile($templatePath . 'tailwind.config.js','tailwind.config.html');
+        // template readme file
+        Dev::createFile($templatePath . 'README.md','template-readme.html',[
+            'name' => $templateName
+        ]);
+
         return ($this->hasError() == false);
     }
 

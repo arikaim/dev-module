@@ -52,27 +52,4 @@ class DevAction extends Action
         }
         return true;
     }
-
-    /**
-     * Create file
-     *
-     * @param string $fileName
-     * @param string $templateName
-     * @param array  $params
-     * @return boolean
-     */
-    protected function createFile(string $fileName, string $templateName, array $params = []): bool
-    {
-        global $arikaim;
-
-        $path = Path::getModulePath('dev') . 'templates' . DIRECTORY_SEPARATOR;
-        if (File::exists($path . $templateName) == false) {
-            throw new Exception("Module template file not exist", 1);
-        }
-
-        $templateCode = File::read($path . $templateName);
-        $code = $arikaim->get('view')->fetchFromString($templateCode,$params);
-        
-        return (File::exists($fileName) == false) ? File::write($fileName,$code) : true;
-    }
 }

@@ -11,6 +11,7 @@ namespace Arikaim\Modules\Dev\Console;
 
 use Arikaim\Core\Console\ConsoleCommand;
 use Arikaim\Core\Actions\Actions;
+use Arikaim\Core\Utils\Utils;
 
 /**
  * Create template command
@@ -46,6 +47,7 @@ class CreateTemplate extends ConsoleCommand
         if (empty($name) == true) {
             $name = $this->question('Template name: ');
         }
+        $name = Utils::slug($name);
 
         $action = Actions::createFromModule('CreateTemplate','dev');
         $action->option('name',$name);
