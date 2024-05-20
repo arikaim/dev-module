@@ -1,0 +1,43 @@
+<?php
+
+namespace Arikaim\Extensions\Content\Controllers;
+
+use Arikaim\Core\Controllers\ApiController;
+use Arikaim\Core\Db\Model;
+
+/**
+ * Api controller
+*/
+class {{ class }} extends ApiController
+{
+    /**
+     * Init controller
+     *
+     * @return void
+     */
+    public function init()
+    {
+        $this->setExtensionName('{{ extension }}');
+    }
+
+    /**
+     * Api method
+     *
+     * @param \Psr\Http\Message\ServerRequestInterface $request
+     * @param \Psr\Http\Message\ResponseInterface $response
+     * @param \Arikaim\Core\Validator\Validator $data
+     * @return mixed
+    */
+    public function apiMethod($request, $response, $data) 
+    { 
+        $data                 
+            ->validate(true); 
+
+        // code 
+        $resultVar = 'Result var';
+        
+        $this
+            ->message('Custom message')
+            ->field('result',$resultVar);    
+    }
+}

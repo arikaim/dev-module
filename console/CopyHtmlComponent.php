@@ -10,7 +10,6 @@
 namespace Arikaim\Modules\Dev\Console;
 
 use Arikaim\Core\Console\ConsoleCommand;
-use Arikaim\Core\Utils\File;
 use Arikaim\Core\Actions\Actions;
 
 /**

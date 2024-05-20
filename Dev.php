@@ -42,6 +42,8 @@ class Dev extends Module
         $this->registerConsoleCommand('DowloadHtmlComponent');
         $this->registerConsoleCommand('CopyHtmlComponent');
         $this->registerConsoleCommand('CreateExtension');
+        $this->registerConsoleCommand('CreateController');
+        $this->registerConsoleCommand('CreateDriver');
     }
 
     /**

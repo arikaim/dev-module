@@ -11,8 +11,6 @@ namespace Arikaim\Modules\Dev\Actions;
 
 use Arikaim\Core\Actions\Action;
 use Arikaim\Core\Utils\File;
-use Arikaim\Core\Utils\Path;
-use Exception;
 
 /**
 * Create template action
