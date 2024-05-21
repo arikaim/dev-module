@@ -53,16 +53,20 @@ class CreateDriver extends ConsoleCommand
  
         $class = $input->getArgument('class');
         if (empty($name) == true) {
-            $class = $this->question('Controller class name (no spaces):');
+            $class = $this->question('Driver class name (no spaces):');
         }
 
         $extensionPath = Path::EXTENSIONS_PATH . $extension . DIRECTORY_SEPARATOR;
         if (File::exists($extensionPath) == false) {
             $this->showError('Extension not exist');
+            return;
         }
+
+        $path = $extensionPath . 'drivers' . DIRECTORY_SEPARATOR;
 
         $action = Actions::createFromModule('CreateDriver','dev',[
             'class'     => $class,
+            'path'      => $path,
             'extension' => $extension
         ])->getAction();
        
