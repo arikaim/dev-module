@@ -15,9 +15,9 @@ use Arikaim\Core\Utils\File;
 use Arikaim\Core\Actions\Actions;
 
 /**
- * Create driver controller class command
+ * Create action controller class command
  */
-class CreateDriver extends ConsoleCommand
+class CreateAction extends ConsoleCommand
 {  
     /**
      * Configure command
@@ -26,10 +26,10 @@ class CreateDriver extends ConsoleCommand
      */
     protected function configure()
     {
-        $this->setName('extension:driver:create');
-        $this->setDescription('Create driver in extension');    
+        $this->setName('extension:action:create');
+        $this->setDescription('Create action in extension');    
         $this->addOptionalArgument('extension','Extension name');    
-        $this->addOptionalArgument('class','Driver class');       
+        $this->addOptionalArgument('class','Action class');       
     }
 
     /**
@@ -52,20 +52,17 @@ class CreateDriver extends ConsoleCommand
  
         $class = $input->getArgument('class');
         if (empty($name) == true) {
-            $class = $this->question('Driver class name (no spaces):');
+            $class = $this->question('Action class name (no spaces):');
         }
 
-        $extensionPath = Path::EXTENSIONS_PATH . $extension . DIRECTORY_SEPARATOR;
+        $extensionPath = Path::getExtensionPath($extension);
         if (File::exists($extensionPath) == false) {
             $this->showError('Extension not exist');
             return;
         }
 
-        $path = $extensionPath . 'drivers' . DIRECTORY_SEPARATOR;
-
-        $action = Actions::createFromModule('CreateDriver','dev',[
-            'class'     => $class,
-            'path'      => $path,
+        $action = Actions::createFromModule('CreateAction','dev',[
+            'class'     => $class,           
             'extension' => $extension
         ])->getAction();
        

@@ -44,6 +44,7 @@ class Dev extends Module
         $this->registerConsoleCommand('CreateExtension');
         $this->registerConsoleCommand('CreateController');
         $this->registerConsoleCommand('CreateDriver');
+        $this->registerConsoleCommand('CreateAction');
     }
 
     /**
