@@ -65,6 +65,10 @@ class CopyHtmlComponent extends ConsoleCommand
         $this->writeFieldLn('Source path',$action->get('source_path',''));
         $this->writeFieldLn('Destination path',$action->get('dest_path',''));
 
-        $this->showCompleted();
+        if ($action->hasError() == false) {
+            $this->showCompleted();
+        } else {
+            $this->showError($action->getError());
+        }
     }
 }

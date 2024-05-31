@@ -49,11 +49,15 @@ class CreateTemplate extends ConsoleCommand
         }
         $name = Utils::slug($name);
 
-        $action = Actions::createFromModule('CreateTemplate','dev');
+        $action = Actions::createFromModule('CreateTemplate','dev')->getAction();
         $action->option('name',$name);
     
         $action->run();
 
-        $this->showCompleted();
+        if ($action->hasError() == false) {
+            $this->showCompleted();
+        } else {
+            $this->showError($action->getError());
+        }
     }
 }

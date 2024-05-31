@@ -1,0 +1,41 @@
+<?php
+
+namespace {{ namespace }};
+
+use Arikaim\Core\Db\Schema;
+
+/**
+ * Database table schema definition.
+ */
+class {{ class }} extends Schema  
+{    
+    /**
+     * Table name
+     *
+     * @var string
+     */
+    protected $tableName = '{{ table_name }}';
+
+    /**
+     * Create table
+     *
+     * @param \Arikaim\Core\Db\TableBlueprint $table
+     * @return void
+     */
+    public function create($table) 
+    {            
+        // columns
+        $table->id();
+        $table->prototype('uuid');   
+    }
+
+    /**
+     * Update table
+     *
+     * @param \Arikaim\Core\Db\TableBlueprint $table
+     * @return void
+     */
+    public function update($table) 
+    {              
+    }
+}

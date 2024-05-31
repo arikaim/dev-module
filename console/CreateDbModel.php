@@ -15,9 +15,9 @@ use Arikaim\Core\Utils\File;
 use Arikaim\Core\Actions\Actions;
 
 /**
- * Create action class command
+ * Create db model class command
  */
-class CreateAction extends ConsoleCommand
+class CreateDbModel extends ConsoleCommand
 {  
     /**
      * Configure command
@@ -26,10 +26,11 @@ class CreateAction extends ConsoleCommand
      */
     protected function configure()
     {
-        $this->setName('extension:action:create');
-        $this->setDescription('Create action in extension');    
+        $this->setName('extension:model:create');
+        $this->setDescription('Create db model class in extension');    
         $this->addOptionalArgument('extension','Extension name');    
-        $this->addOptionalArgument('class','Action class');       
+        $this->addOptionalArgument('class','Model class');       
+        $this->addOptionalArgument('table_name','Db table name');       
     }
 
     /**
@@ -52,7 +53,12 @@ class CreateAction extends ConsoleCommand
  
         $class = $input->getArgument('class');
         if (empty($name) == true) {
-            $class = $this->question('Action class name (no spaces):');
+            $class = $this->question('Db Model class name (no spaces):');
+        }
+
+        $tableName = $input->getArgument('table_name');
+        if (empty($tableName) == true) {
+            $tableName = $this->question('Db table name (no spaces):');
         }
 
         $extensionPath = Path::getExtensionPath($extension);
@@ -61,13 +67,14 @@ class CreateAction extends ConsoleCommand
             return;
         }
 
-        $action = Actions::createFromModule('CreateAction','dev',[
-            'class'     => $class,           
-            'extension' => $extension
+        $action = Actions::createFromModule('CreateModel','dev',[
+            'class'      => $class,           
+            'table_name' => $tableName,           
+            'extension'  => $extension
         ])->getAction();
        
         $action->run();
-
+        
         if ($action->hasError() == false) {
             $this->showCompleted();
         } else {

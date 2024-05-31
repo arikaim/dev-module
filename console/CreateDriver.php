@@ -71,6 +71,10 @@ class CreateDriver extends ConsoleCommand
        
         $action->run();
 
-        $this->showCompleted();
+        if ($action->hasError() == false) {
+            $this->showCompleted();
+        } else {
+            $this->showError($action->getError());
+        }
     }
 }

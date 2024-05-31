@@ -45,6 +45,7 @@ class Dev extends Module
         $this->registerConsoleCommand('CreateController');
         $this->registerConsoleCommand('CreateDriver');
         $this->registerConsoleCommand('CreateAction');
+        $this->registerConsoleCommand('CreateDbModel');
     }
 
     /**

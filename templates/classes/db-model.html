@@ -1,0 +1,40 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Eloquent\Model;
+
+use Arikaim\Core\Db\Traits\Uuid;
+use Arikaim\Core\Db\Traits\Find;
+
+/**
+ * Db model class
+ */
+class {{ class }} extends Model
+{
+    use Uuid,     
+        Find;
+    
+    /**
+     * Table name
+     *
+     * @var string
+     */
+    protected $table = '{{ table_name }}';
+
+    /**
+     * Fillable attributes
+     *
+     * @var array
+     */
+    protected $fillable = [
+    ];
+    
+    /**
+     * Disable timestamps
+     *
+     * @var boolean
+     */
+    public $timestamps = false;
+
+}

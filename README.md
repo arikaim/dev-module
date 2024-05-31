@@ -18,3 +18,10 @@ Arikaim CMS dev tools
 composer require arikaim/dev-module
 
 ```
+
+#### Console commands list
+```sh
+
+php cli
+
+```
