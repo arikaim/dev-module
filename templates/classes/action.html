@@ -27,4 +27,26 @@ class {{ class }} extends Action
     public function run(...$params)
     {
     }
+
+    /**
+    * Init properties descriptor
+    *
+    * @return void
+    */
+    protected function initDescriptor(): void
+    {
+        $this->descriptor->get('options')->property('property1',function($property) {
+            $property
+                ->title('Action Property 1')
+                ->type('text')                      
+                ->readonly(false);              
+        }); 
+
+        $this->descriptor->get('result')->property('result1',function($property) {
+            $property
+                ->title('Result field 1')
+                ->type('text')                      
+                ->readonly(false);              
+        }); 
+    }
 }
