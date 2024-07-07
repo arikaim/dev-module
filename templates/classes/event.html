@@ -1,0 +1,33 @@
+<?php
+
+namespace {{ namespace }};
+
+use Arikaim\Core\Interfaces\Events\EventInterface;
+use Arikaim\Core\Events\Event;
+
+/**
+ * Base event class
+*/
+class {{ class }} extends Event implements EventInterface
+{
+    /**
+     * Init event
+     *
+     * @return void
+     */
+    protected function init(): void
+    {
+        $this->setName('{{ event_name }}');
+        $this->setTitle('Event title');
+        $this->setDescription('Event description.');
+    }
+
+    /**
+     * Init event descriptor properties 
+     *
+     * @return void
+     */
+    protected function initDescriptor(): void
+    {
+    }
+}

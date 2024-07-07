@@ -11,13 +11,14 @@ namespace Arikaim\Modules\Dev\Actions;
 
 use Arikaim\Core\Utils\File;
 use Arikaim\Core\Utils\Path;
+use Arikaim\Core\Utils\Factory;
 use Arikaim\Modules\Dev\Actions\DevAction;
 use Arikaim\Modules\Dev\Dev;
 
 /**
-* Create action class
+* Create event class
 */
-class CreateAction extends DevAction 
+class CreateEvent extends DevAction 
 {
     /**
      * Init action
@@ -38,34 +39,36 @@ class CreateAction extends DevAction
     {
         global $arikaim;
 
-        $actionClass = $this->getOption('class',null);
-        if (empty($actionClass) == true) {
-            $this->error("Missing action class name");
+        $eventClass = $this->getOption('class',null);
+        if (empty($eventClass) == true) {
+            $this->error("Missing event class name");
             return false;
         }
         
-       
+        $eventName = $this->getOption('event_name',null);
+        if (empty($eventName) == true) {
+            $this->error("Missing event name");
+            return false;
+        }
 
         $extension = $this->getOption('extension',null);
-        $module = $this->getOption('module',null);
-
-        if (empty($extension) == false) {
-            $namespace = 'Arikaim\\Extensions\\' . \ucfirst($extension) . '\\Actions';
-            $path = Path::getExtensionPath($extension) . 'actions' . DIRECTORY_SEPARATOR;
-        } else {
-            $namespace = 'Arikaim\\Modules\\' . \ucfirst($module) . '\\Actions';
-            $path = Path::getModulePath($module) . 'actions' . DIRECTORY_SEPARATOR;
+        if (empty($extension) == true) {
+            $this->error("Missing extension name");
+            return false;
         }
-        
+
+        $namespace = Factory::getEventNamespace($extension);
+        $path = Path::getExtensionPath($extension) . 'events' . DIRECTORY_SEPARATOR;
         // create path
         if (File::exists($path) == false) {
             File::makeDir($path);
         }
 
-        // create action class file
-        Dev::createFile($path . $actionClass . '.php','classes/action.html',[
-            'namespace' => $namespace,
-            'class'     => $actionClass
+        // create event class file
+        Dev::createFile($path . $eventClass . '.php','classes/event.html',[
+            'namespace'  => $namespace,
+            'class'      => $eventClass,
+            'event_name' => $eventName
         ]);
       
         return ($this->hasError() == false);
