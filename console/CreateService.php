@@ -15,9 +15,9 @@ use Arikaim\Core\Utils\File;
 use Arikaim\Core\Actions\Actions;
 
 /**
- * Create action class command
+ * Create service class command
  */
-class CreateAction extends ConsoleCommand
+class CreateService extends ConsoleCommand
 {  
     /**
      * Configure command
@@ -26,10 +26,11 @@ class CreateAction extends ConsoleCommand
      */
     protected function configure()
     {
-        $this->setName('extension:action:create');
-        $this->setDescription('Create action in extension');    
+        $this->setName('extension:service:create');
+        $this->setDescription('Create service in extension');    
         $this->addOptionalArgument('extension','Extension name');    
-        $this->addOptionalArgument('class','Action class');       
+        $this->addOptionalArgument('class','Service class');       
+        $this->addOptionalArgument('name','Service name');       
     }
 
     /**
@@ -52,7 +53,12 @@ class CreateAction extends ConsoleCommand
  
         $class = $input->getArgument('class');
         if (empty($class) == true) {
-            $class = $this->question('Action class name (no spaces):');
+            $class = $this->question('Service class (no spaces):');
+        }
+
+        $name = $input->getArgument('name');
+        if (empty($name) == true) {
+            $name = $this->question('Service name (no spaces):');
         }
 
         $extensionPath = Path::getExtensionPath($extension);
@@ -61,8 +67,9 @@ class CreateAction extends ConsoleCommand
             return;
         }
 
-        $action = Actions::createFromModule('CreateAction','dev',[
+        $action = Actions::createFromModule('CreateService','dev',[
             'class'     => $class,           
+            'name'      => $name,           
             'extension' => $extension
         ])->getAction();
        

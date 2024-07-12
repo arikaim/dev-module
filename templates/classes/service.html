@@ -1,0 +1,20 @@
+<?php
+
+namespace {{ namespace }};
+
+use Arikaim\Core\Service\Service;
+use Arikaim\Core\Service\ServiceInterface;
+
+/**
+ * Service class
+*/
+class {{ class }} extends Service implements ServiceInterface
+{
+    /**
+     * Init service
+    */
+    public function boot()
+    {
+        $this->setServiceName('{{ name }}');
+    }
+}

@@ -2,7 +2,7 @@
     "title": "Dev Tools",
     "name": "dev",
     "package-type": "module",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "Dev tools module.",
     "type": "package",
     "repository": "https://github.com/arikaim/dev-module.git"    
