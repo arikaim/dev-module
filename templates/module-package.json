@@ -1,0 +1,8 @@
+{
+    "title": "{{ name }} module",
+    "name": "{{ name }}",
+    "package-type": "module",
+    "version": "1.0.0",
+    "description": "Module description",
+    "type": "package"
+}
